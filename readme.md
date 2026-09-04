@@ -4,9 +4,9 @@
 - Gerar Requirements - OK
 - Gerar dados falsos - OK
 - Gerar Docker Compose - OK
-- Gerar Dockerfile 
+- Gerar Dockerfile - OK
 - Gerar ETL 
-    - Quality
+    - Quality - OK
     - Etl
     - Testes
 - Gerar run_pipeline.sh
