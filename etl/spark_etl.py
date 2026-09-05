@@ -71,7 +71,7 @@ def write_single_parquet(df, path):
     tmp_dir = path + "_tmp"
     df.coalesce(1).write.mode("overwrite").parquet(tmp_dir)
     part_file = next(f for f in os.listdir(tmp_dir) if f.startswith("part-") and f.endswith(".parquet"))
-    shutil.move(os.path.koin(tmp_dir, part_file), path)
+    shutil.move(os.path.join(tmp_dir, part_file), path)
     shutil.rmtree(tmp_dir)
 
 def run_etl(output_dir):
@@ -147,7 +147,7 @@ def run_etl(output_dir):
         .groupBy("bandeira_cartao")
         .agg(
             spark_count("*").alias("qtd_movimentacoes"),
-            spark_sum(col("vlr_transacao_movimento").cast("double").alias("valor_total"))
+            spark_sum(col("vlr_transacao_movimento").cast("double")).alias("valor_total")
         )
         .orderBy(col("valor_total").desc())
     )

@@ -40,12 +40,10 @@ def build_star_schema(df_associado: DataFrame, df_conta:DataFrame, df_cartao: Da
     )
 
     dim_conta = df_conta.select(
-        col("id").alias("id_cartao"),
-        col("num_cartao"),
-        col("nom_impresso").alias("nome_impresso_cartao"),
-        col("data_criacao").alias("data_criacao_conta"),   
-
-     )
+        col("id").alias("id_conta"),
+        col("tipo").alias("tipo_conta"),
+        col("data_criacao").alias("data_criacao_conta"),
+    )
 
     dim_cartao = df_cartao.select(
         col("id").alias("id_cartao"),
@@ -63,7 +61,7 @@ def build_star_schema(df_associado: DataFrame, df_conta:DataFrame, df_cartao: Da
         df_mov_valida.alias("mov")
         .join(df_cartao.alias("car"), col("mov.id_cartao") == col("car.id"), "inner")
         .select(
-            col("mov_id").alias("id_movimentacao"),
+            col("mov.id").alias("id_movimentacao"),
             col("mov.id_cartao"),
             col("car.id_conta"),
             col("car.id_associado"),
@@ -98,7 +96,7 @@ def anonimizar_nome(df: DataFrame, coluna_nome: str = "nome", coluna_sobrenome: 
     """
     #Se houver duas pessoas com nomes parecidos, conferimos pelo final do cpf
     #Se houver duas pessoas com nomes parecidos e final igual do cpf (irmãos)? ai repensamos o modelo
-    return df.WithColumn (
+    return df.withColumn (
         coluna_sobrenome,
         concat(substring(col(coluna_sobrenome), 1,1), lit("."))
     )
@@ -117,7 +115,7 @@ def validar_movimentacoes(df: DataFrame, coluna_valor: str = "vlr_transacao"):
     invalidos = df_invalido.count()
     percentual_invalido = round((invalidos / total) * 100,2) if total > 0 else 0.0
 
-    return df_valido, df_invalidao, percentual_invalido
+    return df_valido, df_invalido, percentual_invalido
 
 def calcular_metricas_qualidade(df: DataFrame, colunas_chave_duplicidade: list) -> dict:
     """

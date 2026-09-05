@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS associado (
     nome VARCHAR(100) NOT NULL,
     sobrenome varchar(100) NOT NULL,
     idade INT NOT NULL,
-    email VARHCAR(150) NOT NULL,
+    email VARCHAR(150) NOT NULL,
     cpf VARCHAR(14) NOT NULL UNIQUE -- cpf vai ser o dado sensível que vou tratar posteriormente com uma função, lembrar de convsersar sobre na reunião para comentar sobre caso de uso na CGE
 );
 
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS conta (
 CREATE TABLE IF NOT EXISTS cartao (
     id SERIAL PRIMARY KEY,
     num_cartao VARCHAR(20) NOT NULL, --dado sensivel? provavelmente mas vou manter apenas no cpf e nome como foi solicitado
-    nom_impesso VARCHAR(100) NOT NULL, --bater com nome do associado? uma boa, mas talvez deixe o projeto complexo
+    nom_impresso VARCHAR(100) NOT NULL, --bater com nome do associado? uma boa, mas talvez deixe o projeto complexo
     bandeira VARCHAR(20) NOT NULL,
     data_criacao TIMESTAMP NOT NULL,
     id_conta INT NOT NULL REFERENCES conta(id), --gera chave com a tabela de conta
