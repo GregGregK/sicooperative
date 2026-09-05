@@ -7,7 +7,7 @@
 - Gerar Dockerfile - OK
 - Gerar ETL 
     - Quality - OK
-    - Etl
-    - Testes
-- Gerar run_pipeline.sh
-- BI
+    - Etl - OK
+    - Testes - OK
+- Gerar run_pipeline.sh - ok
+- BI 
