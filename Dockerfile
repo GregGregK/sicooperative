@@ -14,4 +14,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+RUN sed -i 's/\r$//' run_pipeline.sh
+
 CMD ["bash", "run_pipeline.sh"]

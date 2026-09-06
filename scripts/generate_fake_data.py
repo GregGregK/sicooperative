@@ -86,19 +86,17 @@ def gerar_dados_sql(conn, args):
         n_movs = random.randint(3, 10)
         for _ in range(n_movs):
             valor = round(random.uniform(5, 3000), 2)
-            # ~4% de chance de gerar um valor negativo de propósito
+            #4% chance valor negativo
             if random.random() < 0.04:
                 valor = -valor
-
+            #7% chance valor nulo
             descricao = None if random.random() < 0.07 else fake.bs().capitalize()
-
             cur.execute(
                 """INSERT INTO movimentacao (vlr_transacao, des_transacao, data_movimentacao, id_cartao)
                    VALUES (%s, %s, %s, %s) RETURNING id""",
                 (valor, descricao, random_datetime(start_years_ago=2), cartao_id),
             )
             total_movs += 1
-
     # Duplica propositalmente ~2% das movimentações
     cur.execute("SELECT id_cartao, vlr_transacao, des_transacao, data_movimentacao FROM movimentacao")
     todas_movs = cur.fetchall()

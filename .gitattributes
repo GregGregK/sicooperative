@@ -1,0 +1,7 @@
+# Garante que scripts shell sempre usem final de linha LF (Unix), mesmo que
+# alguém clone o repositório no Windows com configurações do Git que
+# converteriam automaticamente para CRLF. Sem isso, o run_pipeline.sh quebra
+# dentro do container Linux com erro "$'\r': command not found".
+*.sh text eol=lf
+Dockerfile text eol=lf
+docker-compose.yml text eol=lf
