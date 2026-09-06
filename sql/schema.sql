@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS cartao (
 CREATE TABLE IF NOT EXISTS movimentacao (
     id SERIAL PRIMARY KEY,
     vlr_transacao DECIMAL(15,2) NOT NULL, --na inserção adicionar dados negativos para poder fazer as funções de teste e fazer validação de integridade, decidir 15,2 ou 10,2
-    des_transacao VARCHAR(200) NOT NULL,
+    des_transacao VARCHAR(200), --antes eu tinha feito com not null, mas para ter mais tratamento de erros coloquei uma nova função que trás possíveis valores nulos para a coluna, refletindo um cenario real onde o sistema ou o usuario esquece de preencher a descrição
     data_movimentacao  TIMESTAMP NOT NULL, --timestamp ao inves de date pra poder ver exatamente o momento da inserção ou do contexto
     id_cartao INT NOT NULL REFERENCES cartao(id)
 );

@@ -89,10 +89,13 @@ def gerar_dados_sql(conn, args):
             # ~4% de chance de gerar um valor negativo de propósito
             if random.random() < 0.04:
                 valor = -valor
+
+            descricao = None if random.random() < 0.07 else fake.bs().capitalize()
+
             cur.execute(
                 """INSERT INTO movimentacao (vlr_transacao, des_transacao, data_movimentacao, id_cartao)
                    VALUES (%s, %s, %s, %s) RETURNING id""",
-                (valor, fake.bs().capitalize(), random_datetime(start_years_ago=2), cartao_id),
+                (valor, descricao, random_datetime(start_years_ago=2), cartao_id),
             )
             total_movs += 1
 
