@@ -100,7 +100,7 @@ def montar_html(qualidade, chart_js_source):
   <header>
     <p class="marca">SICOOPERATIVE</p>
     <h1>Painel de qualidade dos dados</h1>
-    <p class="subtitulo">Métricas coletadas na etapa de validação do ETL, sobre o dado bruto de movimentação — antes de qualquer filtro ou correção ser aplicado.</p>
+    <p class="subtitulo">Métricas coletadas na etapa de validação do ETL, sobre o dado bruto de movimentação, antes de qualquer filtro ou correção ser aplicado.</p>
   </header>
 
   <div class="regua-kpi">
@@ -161,7 +161,7 @@ def montar_html(qualidade, chart_js_source):
   </section>
 
   <footer>
-    Classificação de severidade: abaixo de 5% = OK, entre 5% e 15% = Atenção, acima de 15% = Crítico. Gerado localmente a partir de data_quality_report.json — apenas para demonstração.
+    Classificação de severidade: abaixo de 5% = OK, entre 5% e 15% = Atenção, acima de 15% = Crítico. Gerado localmente a partir de data_quality_report.json.
   </footer>
 
 </div>
