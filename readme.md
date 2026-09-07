@@ -164,7 +164,7 @@ python gerar-bi-qualidade.py —output-dir data/output
 
   associado, com CPF e sobrenome já anonimizados (Usado posteriormente no bi de amostra).
 
-- **`movimento_flat.parquet`**: mesma visão, em um único arquivo Parquet (não uma pasta) — importável diretamente no Power BI ou lido com `pandas.read_parquet()`.
+- **`movimento_flat.parquet`**: mesma visão, em um único arquivo Parquet (não uma pasta): importável diretamente no Power BI ou lido com `pandas.read_parquet()`.
 
 - **`analise_negocio_movimentacoes_por_bandeira.csv`**: exemplo de entrega
 
@@ -180,7 +180,7 @@ python gerar-bi-qualidade.py —output-dir data/output
 
 - **`star_schema/`**: modelo dimensional (star schema) pronto para consumo
 
-  direto no Power BI — `dim_associado.parquet`, `dim_conta.parquet`,
+  direto no Power BI : `dim_associado.parquet`, `dim_conta.parquet`,
 
   `dim_cartao.parquet` (cada uma aparecendo uma única vez, sem repetição) e
 
@@ -222,7 +222,7 @@ python gerar-bi-qualidade.py —output-dir data/output
 
   > renomeia o resultado para um nome de arquivo fixo, eliminando os
 
-  > arquivos auxiliares — uma troca aceitável dado o volume pequeno de
+  > arquivos auxiliares : uma troca aceitável dado o volume pequeno de
 
   > dados fictícios deste desafio; em um cenário de produção com grande
 
@@ -282,7 +282,7 @@ python gerar-bi-qualidade.py —output-dir data/output
 
   metadata diferente) e não se beneficiaria de um schema relacional rígido.
 
-- **Extensão do modelo — tabela `cartao`**: o enunciado pedia só
+- **Extensão do modelo : tabela `cartao`**: o enunciado pedia só
 
   associado/conta/movimentação, mas mantive `cartao` como entidade
 
@@ -355,6 +355,8 @@ python gerar-bi-qualidade.py —output-dir data/output
 - Pensar em outra forma de inserção de dados caso não fosse um desafio técnico, trocar para 'on conflict', gerar truncate antes dos dados, ou alguma outra forma melhor e performatica. (No momento sempre ao rodar o etl se não derrubar o container vai gerar mais e mais dados todas as vezes)
 
 - Pensar em frequencia de recebimento e ingestão de novos dados.
+
+- Mudar para outro modelo de schema: Snowflake, para assim poder tratar os dados de forma melhor e ter mais performace em paíneis nas partes de filtros (ex: dim_cartao, dim_bandeira, dim_banco, dim_agencia, dim_associado, dim_endereco, dim_estado, dim_tempo, fat_movimentacoes)
 
 ## Dificuldades encontradas
 
