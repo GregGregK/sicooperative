@@ -358,6 +358,7 @@ python gerar-bi-qualidade.py —output-dir data/output
 
 - Mudar para outro modelo de schema: Snowflake, para assim poder tratar os dados de forma melhor e ter mais performace em paíneis nas partes de filtros (ex: dim_cartao, dim_bandeira, dim_banco, dim_agencia, dim_associado, dim_endereco, dim_estado, dim_tempo, fat_movimentacoes)
 
+- Possivelmente gerar Imagem docker pronta ao inves de ter que subir toda vez que rodar o projeto + mudar o enderaçemento de ip
 ## Dificuldades encontradas
 
   
